@@ -1,3 +1,8 @@
+---
+sort: 2
+---
+
+
 # A Comparison of Software and Hardware Techniques for x86 Virtualization
 
 ## Summary

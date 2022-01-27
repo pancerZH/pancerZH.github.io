@@ -1,3 +1,8 @@
+---
+sort: 3
+---
+
+
 # Performance Evaluation of Intel EPT Hardware Assist & Memory Resource Management in VMware ESX Server (OSDI'02)
 
 ## Summary
