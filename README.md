@@ -8,4 +8,4 @@ If you have any questions, or just want to contact me, please send emails to me 
 
 Currently collected:
 
-{% include list.liquid all=true %}
+{% include list.liquid all=false %}
