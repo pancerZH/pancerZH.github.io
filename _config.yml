@@ -12,10 +12,15 @@ theme: null
 readme_index:
   with_frontmatter: true
 
+jekyll-rushed-analytics:
+  GoogleAnalytics4:
+    measurement_id: G-93D140SBX5
+
 plugins:
   - jemoji
   - jekyll-avatar
   - jekyll-mentions
+  - jekyll-rushed-analytics
 
 exclude:
   - Makefile
