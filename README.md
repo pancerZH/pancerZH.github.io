@@ -5,3 +5,7 @@ Hi there, I am Wenzhe Zhang (张文喆), I am currently a graduate student in *U
 This is my notebook to record my working, reading and learning materials, and I am more than happy to share them to everyone. 
 
 If you have any questions, or just want to contact me, please send emails to me directly: wenzheinfinity@gamil.com
+
+Currently collected:
+
+{% include list.liquid all=true %}
