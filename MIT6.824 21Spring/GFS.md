@@ -19,7 +19,7 @@ GFS is not built for experiments, but based on very specific goals. It does not 
 
 ## Structures about GFS
 
-1. **Single master**: GFS has one single master, which maintains file metadata, and is obviously a centric component. This single master simplifies the whole system, but GFS's developers deal with it carefully. Only data flow is passed to and from this master, and data flow, on the other hand, is not. This design decreases the workload of I/O and network bandwidth, and it has been proved a delightful design.
+1. **Single master**: GFS has one single master, which maintains file metadata, and is obviously a centric component. This single master simplifies the whole system, but GFS's developers deal with it carefully. Only control flow is passed to and from this master, while data flow, on the other hand, is not. This design decreases the workload of I/O and network bandwidth, and it has been proved a delightful design.
 
 2. **Multi chunkservers**: They are used to store files and their replicas. Files are stored in chunks, which are fixed-size buckets, or blocks. GFS treats it carefully when writing contents into these buckets,  because it has to care about the both sides of the file, they may be stored in different buckets, and these details must be recorded and tracked for reading.
 3. **Multi clients**: Clients would simply send requests to the master, and the master would check its records and find out which chunkserver contains the file a client wants and locations. These information would be sent back the clients, and clients would communicate with chunkservers directly for the data.
