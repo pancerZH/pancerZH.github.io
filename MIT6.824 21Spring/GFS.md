@@ -22,7 +22,7 @@ GFS is not built for experiments, but based on very specific goals. It does not 
 1. **Single master**: GFS has one single master, which maintains file metadata, and is obviously a centric component. This single master simplifies the whole system, but GFS's developers deal with it carefully. Only control flow is passed to and from this master, while data flow, on the other hand, is not. This design decreases the workload of I/O and network bandwidth, and it has been proved a delightful design.
 
 2. **Multi chunkservers**: They are used to store files and their replicas. Files are stored in chunks, which are fixed-size buckets, or blocks. GFS treats it carefully when writing contents into these buckets,  because it has to care about the both sides of the file, they may be stored in different buckets, and these details must be recorded and tracked for reading.
-3. **Multi clients**: Clients would simply send requests to the master, and the master would check its records and find out which chunkserver contains the file a client wants and locations. These information would be sent back the clients, and clients would communicate with chunkservers directly for the data.
+3. **Multi clients**: Clients would simply send requests to the master, and the master would check its records and find out which chunkservers contain the file each client wants and their locations. These information would be sent back to clients, and clients would communicate with chunkservers directly for the data.
 
 GFS also maintains necessary logs to track each operation, and creates checkpoints based on these logs. They are powerful to be used for recovering the file system by replaying them.
 
@@ -39,7 +39,7 @@ GFS also uses checksums to verify the validity of records.
 
 Cause each operation would finally be applied to all replicas, GFS uses leases to maintain the consistency across replicas. This mechanism is designed to minimize management overhead at the master. There are some steps:
 
-1. The client asks the master for the location of chunkserver holding the lease for the chunk and locations of other replicas
+1. The client asks the master for the location of the chunkserver holding the lease of the chunk and locations of other replicas
 2. The master replies
 3. The client pushes the data to all replicas
 4. Once receiving all confirmed, the client sends a write request to the primary. The primary applied the mutations
@@ -52,7 +52,7 @@ Cause each operation would finally be applied to all replicas, GFS uses leases t
 GFS decouples the flow of data from the flow of control to use the network efficiently.
 
 - Control Flow: Client -> Primary -> Secondary
-- Data Flow: between chunkservers
+- Data Flow: between chunkservers (and clients)
 
 The key is that each machine forwards the data to the closest machine. Once a machine receives some data, it starts forwarding immediately.
 
