@@ -9,3 +9,7 @@ If you have any questions, or just want to contact me, please send emails to me 
 Currently collected:
 
 {% include list.liquid all=false %}
+
+This is my resume:
+
+![resume](resume.jpg)
