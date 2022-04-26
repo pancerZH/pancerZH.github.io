@@ -6,7 +6,14 @@ sort: 5
 
 This part records some of my past most significant work (courseworks and research work) for reference.
 
+## XML Query Processor
+
+The XML query parser was implemented with Java. The parser could parse XML queries, construct related queries and evaluate these queries on a dataset which is also XML formatted.
+
+[GitHub Link](https://github.com/pancerZH/UCSD-CSE232B-WI22)
+
 ## Haskell-GitHub-Trending
+
 A client terminal application to fetch GitHub recent popular repositories, providing filtering and marking functions.
 
 [GitHub Link](https://github.com/UCSD-CSE-230-FA21/Haskell-GitHub-Trending)
