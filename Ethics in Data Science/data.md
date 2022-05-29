@@ -40,7 +40,7 @@ The whole process could be like:
 
 ![encryption](./imgs/encryption.png)
 
-The encryption system would be isolated form other parts, and internal staff would have no access to the system. The encryption system would also be well protected from external attack to ensure hackers would not gain access to the system. In the wrost scenario, a hacker has got the uid and contents related to the uid, the hacker still could not know which real person these contents belonging to, with the access to the encryption system. 
+The encryption system would be isolated form other parts, and internal staff would have no access to the system. The encryption system would also be well protected from external attack to ensure hackers would not gain access to the system. In the wrost scenario, a hacker has got the uid and contents related to the uid, the hacker still could not know which real person these contents belonging to, without the access to the encryption system. 
 
 I also found that this concern could come from the untransparent recommendation procedure, and it could be critical to receive acknowledged consents from users. Nowadays, tech companies may not be willing to make their tech details transparent to their users, which would definitely lead to distrust between companies and their users. By making the protection methods clear to users, we could expect a positive loop between users and companies.
 
