@@ -24,6 +24,8 @@ For a website or a platform, it is natural for them to record their users' behav
 
 Besides, there could be a more specific dataset recording what users are interested and not interested. There exisits a lot of platforms that allow users to manually select what they are interested and not interested(or blocked) contents. In this kind of dataset, contents would be divided into different categories with different tages, and the user could select these tags to show their preference. This information would also be helpful.
 
+For the purpose to evaluate the quality of recommendation results, some feedbacks from users, like whther a user has clicked in what has been recommended, would also be recorded.
+
 ## Measurement System
 
 The basic principle to determine the measurement system, is to use as little data as possible. In the user behavior dataset, to finish the collaborative filtering job, I only require the user-content tuples to construct the UI matrix. For the user interest tag dataset, I would require the part of what tags a user is not interested to filter the recommendation results. The collaborative filtering algorithm is useful, while it does suffer from slow response to users' changed interests. With the help of manualy taged contents, I could make a quick response to this.
