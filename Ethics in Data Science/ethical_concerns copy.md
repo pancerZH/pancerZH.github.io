@@ -1,0 +1,32 @@
+---
+sort: 4
+---
+
+# Outputs and Usage
+
+## Interpration of Outputs
+
+Basically speaking, the output of the model is a number of contents recommended for a certain user. Here the contents could be news, videos, musics, goods or posts. These contents are generated from the procedure I have mentioned in last chapter, which means they have gone through the filtering system to meet requirements given in past chapters. 
+
+In a more deatiled manner, for a single time of recommendation, there could be like 10 news articles for the user. Among these 10 articles, there could be like 8 articles the user could be interested in, according the user's browsering history and interest tags, if any; another 2 articles could be designed to be recommended to make the user see different contents, or expand the user's view on purpose. These 2 articles may be something that the user is not interested in, or has never expected before. Among all the 10 articles, the model has checked them to exclude what the user has marked as "not interested". In a statistic view of the complete recommendation results arounf users, the model would also try to make each news article has the same or close chance to be recommended.
+
+In a word, compared with traditional recommendation system, my model would not focus on accuracy solely, but also try to reach a just and fair goal of recommendation results, in both view of a single user and the whole system. 
+
+## How the Model Increase Justice
+
+### By making users expand their views and hearing different voices
+
+In last chapter, I have talked about the unfaireness and unjustice of traditional recommendation system to keep users in their own loops. Some discussion of measures my model would take to response to these unfaireness and unjustice has also been given. Here I would dive deep to show a context.
+
+We all know resources on earth are not distributed equally. People living in developed countries or big cities may contact more things and more ideas, compared to people living in less developed areas. With the same start points, a traditional recommendation system would naturally recommend a broder range of contents to the former people, and people with fewer resources tend to be locked in information cocoon much more easily. But with the help of my model to break information cocoon, people in less developed areas could get rid of their limition by their own life, and get the opportunity to explore things even they have never seen or imagined. This is due to the designed 20% of new contents recommended to users in the model, which is responsible for expanding users' views. This measurement, in fact, makes it more just for people in different areas with different resources to explore contents on the Internet. it is clear that the recommendation system I designed would not solve the inequality from its root, but it at least makes things better.
+
+### By making contents equal chance to be recommended
+
+In a field, there are always a number of newcomers for contents generation. They could be a new editor, a new business, a new artist and many other roles. They are new to platforms and their contents tend to be ignored by other users, without some help from the recommendation system to bring their contents to other users. This is exactly what my model would do: by making all contents enjoy equal or nearly equal chance to be displayed to users, it could be more fair and just for these newcomers compared to a traditional recommendation system would do. On the other hand, if some contents are really bad, they would be less likely to be recommended to users. In this way, high quality contents would not be ignored for starting at a low point, and low quality contents would not be always recommended even they are from some super star users.
+
+### By making a quick respond to user's behavior
+
+It is important to confirm one basic concept: users hope that the recommendation system make them happier. So if some recommendation results make some users happy while make other users sad, this is unfair and not we expect to see. In this way, the quick response of the model is pretty critical. Users who have experenced aboration or losing children wish not to see child products being recommended to them, users who have bought some goods wish not to see advertisements from the same or similar goods, and users who used to be in a war and wish not to see war reports: their wills must be respected and responded. The common unfaireness and unjustice in traditional recommendation systems are partialy from the ignorance, which my model would make a proper response by excluding these contents from recommendation lists.
+
+## Situations to Update the Model
+
