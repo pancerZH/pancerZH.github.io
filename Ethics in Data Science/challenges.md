@@ -1,0 +1,27 @@
+---
+sort: 5
+---
+
+# Future Challenges
+
+## Tradeoff Between Profits and Ethics
+
+As I have mentioned in previous chapters, traditional recommendation systems may mainly or only care about profits genertaed by them. While my recommendation system would also care about related ethical issues, and you can see some compromise made in the view of accuracy to meet the requirements, which also means potential reduction in profits.
+
+In my plan, I am looking for a new system to make profits. The key point is to build brand, or to make users understand our efforts. The more ethical services provided by the recommendation system should be what we use to attract more users. Furthermore, accuracy of recommendation results is not the only measurement to evaluate success of a recommendation system, and I am just exploring a new lane. The profits may fall in the beginning while rise then.
+
+However, it is still expected to see some challenges and questions from inside the company at the beginning period. In this way, the engineering team should corporate tightly with financial team and strategy team to provide detailed developemnt and evolution plans, which could be used to persuade the board to stick on the ethical recommendation system.
+
+## Technical Challenges when Updating Models
+
+Given I have also mentioned a lot of aspects in updating the model and data retirement plans, the engineering team should research on these topics and make a more specific plan. These parameters, like data lifetime, update interval and any other filtering parameters, should be devided carefully according to solid investigation and research. These parameters are not only related to the performance of the model, but also ethical concerns. For example, when users see the data retirement plan, they may not expect to see the lifetime of their data is as long as 10 years, or as short as 24 hours. The engineering team should also provided some explaniation on their decisions to verify the validation of these decisions.
+
+## Protection on Data Storage
+
+While my recommendation system relies on encrypted data to process users' behavior data, it is also important to make sure the encryption is safe enough, including the encryption algorithm complexity and the encryption server protection. In the previous example, a hacker would not be able to decrypt the encryped data without access to the encryption server. But obviously, if the hacker gains the access, or succeeds to decrypt the encryption algorithm, the result could be disastrous, which means leakage of user data.
+
+On the other hand, the safety of raw data, which is not excrypted, is also important. Whatever methods we take, the recommendation system still needs to know which user its outputs should be sent to. So the elimination of raw data is impossible. The engineering team may work on this to find a safer way to store these raw data, but I would suggest to add more protection methods to guard these raw data currently.
+
+## Potential Ethical Consideration
+
+Because the model is not fixed, while still expanding by collecting more features from users possibly, the engineering team should always keep an eye on the justice and faireness properties of collected features and the whole system. Each additional collection action should be reviewed carefully and discussed through every corners and aspects to avoid improper usage. The model is based on the trust from users, and focusing on solving ethical concerns in traditional recommendation systems, we should not make it fall into the old style.
