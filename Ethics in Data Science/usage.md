@@ -30,3 +30,24 @@ It is important to confirm one basic concept: users hope that the recommendation
 
 ## Situations to Update the Model
 
+### When user quits
+
+The model heavily depends on users' behavior, which means one recommendation list for a single user could be generated from all other users by visiting their data. It is then obvious that something should be done when some users or even a single user asks to stop using his or her data. In this scenario, the model must be re-trained with left data. The thing is, the model is partialy dynamic, which means it would read current dataset each time making a recommendation. While there are still parts relying on the whole original training dataset. When deleting users' data(behavir data, interest tag and feedbacks) without taking any action, the first part would work fine, as if these data never appears, while the second part is still relying on these deleted data, even indirectly. Their effects are still remaining in the recommendation system. 
+
+Also, there should be a balance between retraining and using the model. In a common recommendation system, there could be millions of users in it, and there could be tens or hundreds of users asking to delete their data every day. It would be impractical to retrain the model each time a single user's data has been deleted. I plan to decide a retraining period, like midnight of each day, or another certain time point in a time interval. The user who chooses to delete the data from the system would be informed about this detail.
+
+### When users' interests change
+
+It is common that something is on trend in a certain period, and people could be no longer interested in it quickly. If the recommendation system still recommends a lot of related contents, people would get bored and less interested in the platform. On the other hand, the platform should not monitor what is on trend, because the platform should always keep nurtural. In this way, the best solution could also be regular update or retraining of the model.
+
+This method could be combined with the former one, which also requires retraining of the model. This is the key point to keep the model always up-to-date and know what users' interests are.
+
+### When more filtering systems are required
+
+Different filtering systems, including quick response system and weight adjustment system, have been talked about. And I have mentioned that some more data beyond users' behavior data would be collected to support these systems. In the future, it is very possible that there are more requirements for filtering recommendation results, in which scenario it is unavoidable to collect more data from users.
+
+The collection of new data is in the view of dimension, instead of quantity. In other words, I am not going to collect data from more users beyond the system involving the model(there is none in fact), instead I may ask for more information from existing users. This behavior would require users' consents, obviously. However, it could also be possible that some of users refuse to give their consents. In this way, the additional filtering systems could be designed as optional: for users who do not give their consents, their recommendation results would not go through the specific filtering system.
+
+### When not allowed to use others' behavior data
+
+Just as I said above, my recommendation system relies on other users' behaviors to generate recommendation list for a certain user. There are also other recommendation systems that do not rely on users' behavior to make recommendation. So if one day behavior data is no longer allowed to be used for recommendation, the current model should be ceased and perhaps we can turn to another valid model.
