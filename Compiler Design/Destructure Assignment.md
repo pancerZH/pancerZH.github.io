@@ -4,6 +4,12 @@ sort: 2
 
 # Destructure Assignment
 
+First of all, with the join of `Lower`, we are going to build a large compiler to exntend ChocoPy's features and supports. Now the whole process is like:
+
+![process-new](./imgs/Compiling-Process-new.png)
+
+The task of my team is to finish support and compiling if destructure assignment feature.
+
 ## Basic Design
 
 In Python, this is called destructure assignment:
