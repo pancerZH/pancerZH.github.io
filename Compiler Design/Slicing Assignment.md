@@ -97,7 +97,7 @@ a = [1, 2, 3, 4]
 b = [4, 5, 6]
 f(a, b)
 print(a)
->>> expected: [4, 5, 6, 4]
+>>> expect: [4, 5, 6, 4]
 ```
 
 This is because the compiler now relies on number of elements of expression of LHS to verify the length of RHS expression, which requires expression of LHS must be plain. In this way, to pass Test 6, I also need to make modification on current implementation.
