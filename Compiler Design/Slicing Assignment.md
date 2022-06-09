@@ -92,7 +92,7 @@ I started from what the current compiler could do. In the current implementation
 
 ```python
 def f(a : [int], b : [int]):
-  a[0], a[1], a[2] = b[0], b[1], b[2]
+  a[0], a[1], a[2] = b
 a = [1, 2, 3, 4]
 b = [4, 5, 6]
 f(a, b)
@@ -145,17 +145,24 @@ if(tDestruct.vars[0].target.tag === "slice" && tDestruct.a.type.tag === "list") 
         throw new TypeCheckError(SRC, `Non-assignable types: ${tValExpr.items[i].a.type} to ${rightType}`);
       }
     }
-  } else if(tValExpr.tag === "call" || tValExpr.tag === "method-call" || tValExpr.tag === "id") {
-    if(tValExpr.a.type.tag != "class" || tValExpr.a.type.name != "iterator") {
-      throw new TypeCheckError(SRC, `cannot unpack non-iterable ${JSON.stringify(tValExpr.a, null, 2)} object`)
-    } else {
+  } else {
+    if(tValExpr.a.type.tag === "list") {
+      if(!isAssignable(env, tValExpr.a.type.itemType, rightType)) {
+        throw new TypeCheckError(SRC, `Non-assignable types: ${tValExpr.a.type.itemType} to ${rightType}`);
+      }
+    } else if(tValExpr.a.type.tag === "class" && tValExpr.a.type.name === "iterator") {
       var rightType2 = env.classes.get('iterator')[1].get('next')[1];
       if(!isAssignable(env, rightType2, rightType)) {
         throw new TypeCheckError(SRC, `Non-assignable types: ${rightType2} to ${rightType}`);
       }
+    } else {
+      // this could be case like l[1:2] = 3
+      if(!isAssignable(env, tValExpr.a.type, rightType)) {
+        throw new TypeCheckError(SRC, `Non-assignable types: ${tValExpr.a.type} to ${rightType}`);
+      }
     }
   }
-} 
+}
 ```
 
 As you can see, the type of slice on LHS is fixed, while I needed to perform check for each possible elements on RHS, so there are different branches to process different type.
