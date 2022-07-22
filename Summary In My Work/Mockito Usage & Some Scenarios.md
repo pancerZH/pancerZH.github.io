@@ -327,3 +327,42 @@ public Obj3 methodA(Obj1 obj1, Obj2 obj2) {
 ```
 
 Things can be as easy as one line with `doAnswer` and a lambda expression inside. In this way, the invocation would be interrupted when invoking `methodB`, and the target object would be returned directly. The `i.getArguments()[0]` indicates we want the first input parameter of the parameter list of `methodB`. 
+
+### Scenario - How to capture input arguments of mocked objects ?
+
+It is common that sometimes we need to check the input of some mocked classes. For example, there is a mocked object `A`, and there is another mocked object `B` in `A`. The method under test of `A` will process some information and pass it into a method in `B`. So we need to check whether the passed-in information is exactly what we expect.
+
+We can use `ArgumentCaptor` to achieve this.
+
+```java
+@Mock
+ObjB objB;
+
+@InjectMocks
+ObjA objA;
+
+@Captor
+ArgumentCaptor<String> strCaptor;
+
+@Test
+public void someTest() {
+    objA.doSomething("hello");
+    
+    Mockito.verify(objB).doAnotherThing(strCaptor.capture());
+    String input = strCaptor.getValue();
+    // do some check and assertion
+}
+```
+
+Or you can capture the input when stubbing:
+
+```java
+@Test
+public void someTest() {
+    when(objB.doAnotherThing(strCaptor.capture())).thenReturn(...);
+    objA.doSomething("hello");
+    String input = strCaptor.getValue();
+    // do some check and assertion
+}
+```
+
