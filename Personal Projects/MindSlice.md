@@ -20,7 +20,7 @@ In my view, long-term memory for agents needs a clean **filesystem-like layer** 
 Before writing code, I settled on four rules for the engine:
 
 - **Mechanism separated from policy**: There are **no LLM API calls**, no external database daemons, and no hardcoded truth heuristics inside the engine. MindSlice provides addressing, layered storage, lineage resolution, lexical search, and transactional staging; judgment stays in prompts, skills, and caller-defined trust rules.
-- **Plain Markdown and TOML as the single source of truth**: Every card and manifest is a plain `.md` or `.toml` file on disk that can be tracked with Git or edited in any IDE. The local SQLite database (`.cache/index.sqlite`) is strictly a disposable cache that can be rebuilt from disk at any time.
+- **Plain Markdown and TOML as the single source of truth**: Every card and manifest is a plain `.md` or `.toml` file on disk that can be tracked with Git or edited in any IDE. The local SQLite database (`.cache/index.sqlite`) holds the search index and link graph, both rebuildable from Markdown. It also stores read counts and last-read timestamps, which are lost if the database is deleted.
 - **Immutable baselines, isolated growth**: Mounted memory *slices* are read-only at runtime. All new learnings go into a writable `@overlay` layer (or `staging/` when human approval is required).
 - **Zero runtime dependencies**: The engine is built exclusively on the Python 3.12+ standard library (`sqlite3`, `tomllib`, `pathlib`, `hashlib`, `fcntl`, `unicodedata`), and exposes the same workspace through a Python API, the `mindslice` CLI, and a 4-tool MCP server.
 
@@ -112,7 +112,7 @@ Keeping the core engine small and policy-free made it straightforward to build s
 - **[MindSlice-plugin](https://github.com/pancerZH/MindSlice-plugin)**: Packages the pinned MindSlice engine, the 4-tool MCP server, review/maintenance skills, and `SessionStart` hooks into native plugins for Claude Code, Antigravity, and Codex.
 - **[MindSlice-forge](https://github.com/pancerZH/MindSlice-forge)**: A zero-dependency CLI pipeline (`profile -> plan -> split -> extract -> finalize`) that drives any unattended agent harness via a simple `--harness-cmd` contract to distill large raw documents into validated slices, backed by per-step Git checkpoints and automated repair loops.
 - **[MindSlice-flow](https://github.com/pancerZH/MindSlice-flow)**: A lightweight state-machine orchestrator for staged memory mounting, settlement, and baking. Each stage mounts its required background slices plus `load = "always"` director cards, lets the agent accumulate runtime state in `@overlay`, and settles/bakes each completed stage into a cumulative `@story` slice—first validated on multi-act interactive tabletop RPG scripts.
-- **[MindSlice-tui](https://github.com/pancerZH/MindSlice-tui)**: A read-only three-pane terminal browser built with Textual on top of MindSlice's Python API, making it easy to inspect slice trees, card contents, `extends`/`supersedes`/backlink graphs, and `.history/changes.jsonl` audit trails.
+- **[MindSlice-tui](https://github.com/pancerZH/MindSlice-tui)**: A three-pane terminal browser built with Textual on top of MindSlice's Python API, making it easy to inspect slice trees, card contents, `extends`/`supersedes`/backlink graphs, and `.history/changes.jsonl` audit trails. Its review and bake screens also apply changes after the user confirms.
 
 ## Takeaways
 
